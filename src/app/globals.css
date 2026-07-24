@@ -8,6 +8,26 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-marino-50: #E8EBF2;
+  --color-marino-100: #C5CDE0;
+  --color-marino-200: #9FACC9;
+  --color-marino-300: #788BB2;
+  --color-marino-400: #5A709F;
+  --color-marino-500: #3D558D;
+  --color-marino-600: #2A3F72;
+  --color-marino-700: #1A2C56;
+  --color-marino-800: #0A1F44;
+  --color-marino-900: #050F22;
+  --color-amarillo-50: #FFF9E6;
+  --color-amarillo-100: #FFEEB3;
+  --color-amarillo-200: #FFE380;
+  --color-amarillo-300: #FFD84D;
+  --color-amarillo-400: #FFCE26;
+  --color-amarillo-500: #FFC107;
+  --color-amarillo-600: #D9A400;
+  --color-amarillo-700: #B38600;
+  --color-amarillo-800: #8C6900;
+  --color-amarillo-900: #664C00;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
