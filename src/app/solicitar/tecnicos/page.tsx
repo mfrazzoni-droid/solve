@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 
@@ -13,7 +13,7 @@ type Tecnico = {
   profiles: { nombre: string; telefono: string | null } | null
 }
 
-export default function TecnicosDisponibles() {
+function ContenidoTecnicos() {
   const searchParams = useSearchParams()
   const solicitudId = searchParams.get('solicitudId')
   const especialidadSlug = searchParams.get('especialidad')
@@ -152,5 +152,13 @@ Contacto: ${solicitud?.nombre_contacto ?? ''}`
         </div>
       </div>
     </main>
+  )
+}
+
+export default function TecnicosDisponibles() {
+  return (
+    <Suspense>
+      <ContenidoTecnicos />
+    </Suspense>
   )
 }
