@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 
-const estados = [
+const estados: { valor: 'disponible' | 'ocupado' | 'fuera_de_servicio'; etiqueta: string; color: string }[] = [
   { valor: 'disponible', etiqueta: 'Disponible', color: 'bg-green-100 text-green-700' },
   { valor: 'ocupado', etiqueta: 'Ocupado', color: 'bg-amarillo-100 text-amarillo-700' },
   { valor: 'fuera_de_servicio', etiqueta: 'Fuera de servicio', color: 'bg-marino-100 text-marino-500' },
@@ -16,7 +16,7 @@ export default function SelectorEstado({ estadoActual }: { estadoActual: string 
   const router = useRouter()
   const supabase = createClient()
 
-  async function cambiarEstado(nuevoEstado: string) {
+  async function cambiarEstado(nuevoEstado: 'disponible' | 'ocupado' | 'fuera_de_servicio') {
     setCargando(true)
     const {
       data: { user },

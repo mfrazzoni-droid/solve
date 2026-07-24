@@ -22,7 +22,7 @@ export default function TecnicosDisponibles() {
   const [cargando, setCargando] = useState(true)
   const [filtroComuna, setFiltroComuna] = useState('')
   const [contactado, setContactado] = useState<string | null>(null)
-  const [solicitud, setSolicitud] = useState<{ descripcion: string; direccion_texto: string; nombre_contacto: string } | null>(null)
+  const [solicitud, setSolicitud] = useState<{ descripcion: string; direccion_texto: string | null; nombre_contacto: string | null } | null>(null)
 
   const supabase = createClient()
 
@@ -35,6 +35,11 @@ export default function TecnicosDisponibles() {
           .eq('id', solicitudId)
           .single()
         if (datosSolicitud) setSolicitud(datosSolicitud)
+      }
+
+      if (!especialidadSlug) {
+        setCargando(false)
+        return
       }
 
       const { data: especialidad } = await supabase

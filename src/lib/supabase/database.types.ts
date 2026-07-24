@@ -187,6 +187,7 @@ export type Database = {
           icono: string | null
           id: string
           nombre: string
+          slug: string
         }
         Insert: {
           activo?: boolean
@@ -194,6 +195,7 @@ export type Database = {
           icono?: string | null
           id?: string
           nombre: string
+          slug: string
         }
         Update: {
           activo?: boolean
@@ -201,6 +203,7 @@ export type Database = {
           icono?: string | null
           id?: string
           nombre?: string
+          slug?: string
         }
         Relationships: []
       }
@@ -309,36 +312,48 @@ export type Database = {
       }
       solicitudes: {
         Row: {
-          cliente_id: string
+          cliente_id: string | null
           created_at: string
           descripcion: string
-          direccion_id: string
+          direccion_id: string | null
+          direccion_texto: string | null
+          email_contacto: string | null
           especialidad_id: string
           estado: Database["public"]["Enums"]["estado_solicitud"]
           id: string
+          nombre_contacto: string | null
           precio_estimado: number | null
+          telefono_contacto: string | null
           updated_at: string
         }
         Insert: {
-          cliente_id: string
+          cliente_id?: string | null
           created_at?: string
           descripcion: string
-          direccion_id: string
+          direccion_id?: string | null
+          direccion_texto?: string | null
+          email_contacto?: string | null
           especialidad_id: string
           estado?: Database["public"]["Enums"]["estado_solicitud"]
           id?: string
+          nombre_contacto?: string | null
           precio_estimado?: number | null
+          telefono_contacto?: string | null
           updated_at?: string
         }
         Update: {
-          cliente_id?: string
+          cliente_id?: string | null
           created_at?: string
           descripcion?: string
-          direccion_id?: string
+          direccion_id?: string | null
+          direccion_texto?: string | null
+          email_contacto?: string | null
           especialidad_id?: string
           estado?: Database["public"]["Enums"]["estado_solicitud"]
           id?: string
+          nombre_contacto?: string | null
           precio_estimado?: number | null
+          telefono_contacto?: string | null
           updated_at?: string
         }
         Relationships: [
@@ -399,8 +414,10 @@ export type Database = {
         Row: {
           calificacion_promedio: number | null
           cantidad_trabajos: number
+          comuna: string | null
           created_at: string
           estado: Database["public"]["Enums"]["estado_tecnico"]
+          horario: string | null
           id: string
           lat: number | null
           lng: number | null
@@ -410,8 +427,10 @@ export type Database = {
         Insert: {
           calificacion_promedio?: number | null
           cantidad_trabajos?: number
+          comuna?: string | null
           created_at?: string
           estado?: Database["public"]["Enums"]["estado_tecnico"]
+          horario?: string | null
           id: string
           lat?: number | null
           lng?: number | null
@@ -421,8 +440,10 @@ export type Database = {
         Update: {
           calificacion_promedio?: number | null
           cantidad_trabajos?: number
+          comuna?: string | null
           created_at?: string
           estado?: Database["public"]["Enums"]["estado_tecnico"]
+          horario?: string | null
           id?: string
           lat?: number | null
           lng?: number | null
@@ -439,8 +460,39 @@ export type Database = {
           },
         ]
       }
+      trabajo_fotos: {
+        Row: {
+          created_at: string
+          id: string
+          trabajo_id: string
+          url: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          trabajo_id: string
+          url: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          trabajo_id?: string
+          url?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "trabajo_fotos_trabajo_id_fkey"
+            columns: ["trabajo_id"]
+            isOneToOne: false
+            referencedRelation: "trabajos"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       trabajos: {
         Row: {
+          calificacion_cliente_comentario: string | null
+          calificacion_cliente_puntaje: number | null
           completado_at: string | null
           created_at: string
           estado: Database["public"]["Enums"]["estado_trabajo"]
@@ -454,6 +506,8 @@ export type Database = {
           updated_at: string
         }
         Insert: {
+          calificacion_cliente_comentario?: string | null
+          calificacion_cliente_puntaje?: number | null
           completado_at?: string | null
           created_at?: string
           estado?: Database["public"]["Enums"]["estado_trabajo"]
@@ -467,6 +521,8 @@ export type Database = {
           updated_at?: string
         }
         Update: {
+          calificacion_cliente_comentario?: string | null
+          calificacion_cliente_puntaje?: number | null
           completado_at?: string | null
           created_at?: string
           estado?: Database["public"]["Enums"]["estado_trabajo"]
