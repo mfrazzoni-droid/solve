@@ -3,6 +3,8 @@ import BotonAprobar from './BotonAprobar'
 import CerrarSesionAdmin from './CerrarSesionAdmin'
 import Link from 'next/link'
 
+export const dynamic = 'force-dynamic'
+
 export default async function DashboardAdmin() {
   const supabase = createAdminClient()
 

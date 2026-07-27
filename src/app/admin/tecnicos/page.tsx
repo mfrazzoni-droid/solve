@@ -2,6 +2,8 @@ import { createAdminClient } from '@/lib/supabase/admin'
 import Link from 'next/link'
 import BotonAprobar from '../BotonAprobar'
 
+export const dynamic = 'force-dynamic'
+
 export default async function TecnicosAdmin() {
   const supabase = createAdminClient()
 
