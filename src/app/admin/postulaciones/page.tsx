@@ -6,10 +6,14 @@ export const dynamic = 'force-dynamic'
 export default async function PostulacionesAdmin() {
   const supabase = createAdminClient()
 
-  const { data: postulaciones } = await supabase
+  const { data: postulaciones, error } = await supabase
     .from('postulaciones_tecnico')
     .select('*')
     .order('created_at', { ascending: false })
+
+  if (error) {
+    console.error('Error postulaciones:', error)
+  }
 
   return (
     <main className="min-h-screen bg-white">
