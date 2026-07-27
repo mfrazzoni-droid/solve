@@ -248,6 +248,60 @@ export type Database = {
           },
         ]
       }
+      postulaciones_tecnico: {
+        Row: {
+          anios_experiencia: number | null
+          comentario: string | null
+          como_consigue_clientes: string | null
+          comuna: string | null
+          comunas_trabajo: string | null
+          created_at: string
+          email: string | null
+          especialidad: string
+          estado: string
+          horario_trabajo: string | null
+          id: string
+          nombre: string
+          telefono: string
+          tiene_vehiculo: boolean | null
+          trabajos_por_semana: string | null
+        }
+        Insert: {
+          anios_experiencia?: number | null
+          comentario?: string | null
+          como_consigue_clientes?: string | null
+          comuna?: string | null
+          comunas_trabajo?: string | null
+          created_at?: string
+          email?: string | null
+          especialidad: string
+          estado?: string
+          horario_trabajo?: string | null
+          id?: string
+          nombre: string
+          telefono: string
+          tiene_vehiculo?: boolean | null
+          trabajos_por_semana?: string | null
+        }
+        Update: {
+          anios_experiencia?: number | null
+          comentario?: string | null
+          como_consigue_clientes?: string | null
+          comuna?: string | null
+          comunas_trabajo?: string | null
+          created_at?: string
+          email?: string | null
+          especialidad?: string
+          estado?: string
+          horario_trabajo?: string | null
+          id?: string
+          nombre?: string
+          telefono?: string
+          tiene_vehiculo?: boolean | null
+          trabajos_por_semana?: string | null
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null

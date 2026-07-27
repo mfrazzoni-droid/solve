@@ -55,6 +55,23 @@ export default function Home() {
           </Link>
         </div>
       </section>
+
+      <section className="border-t border-marino-100 bg-marino-50 px-6 py-20">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-2xl font-semibold text-marino-800 sm:text-3xl">
+            ¿Eres gasfíter, electricista, cerrajero u otro técnico?
+          </h2>
+          <p className="mt-3 text-marino-500">
+            Únete a SOLVE y recibe nuevos clientes que necesitan tu ayuda.
+          </p>
+          <Link
+            href="/postular"
+            className="mt-8 inline-block rounded-full bg-marino-800 px-8 py-4 text-base font-medium text-white transition hover:bg-marino-700"
+          >
+            Quiero unirme como técnico
+          </Link>
+        </div>
+      </section>
     </main>
   )
 }

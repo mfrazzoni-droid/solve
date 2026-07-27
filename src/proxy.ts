@@ -34,9 +34,16 @@ export async function proxy(request: NextRequest) {
     return NextResponse.redirect(new URL('/tecnico/login', request.url))
   }
 
+  const esRutaAdmin = request.nextUrl.pathname.startsWith('/admin')
+  const esLoginAdmin = request.nextUrl.pathname === '/admin/login'
+
+  if (esRutaAdmin && !esLoginAdmin && !user) {
+    return NextResponse.redirect(new URL('/admin/login', request.url))
+  }
+
   return response
 }
 
 export const config = {
-  matcher: ['/tecnico/:path*'],
+  matcher: ['/tecnico/:path*', '/admin/:path*'],
 }
