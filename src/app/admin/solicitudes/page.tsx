@@ -1,5 +1,6 @@
 import { createAdminClient } from '@/lib/supabase/admin'
 import Link from 'next/link'
+import AccionesSolicitud from './AccionesSolicitud'
 
 export const dynamic = 'force-dynamic'
 
@@ -69,6 +70,7 @@ export default async function SolicitudesAdmin() {
                   Sin técnicos contactados todavía
                 </p>
               )}
+              <AccionesSolicitud id={s.id} estado={s.estado} />
             </div>
           ))}
         </div>

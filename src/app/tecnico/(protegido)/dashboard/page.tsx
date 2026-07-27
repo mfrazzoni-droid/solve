@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server'
 import SelectorEstado from './SelectorEstado'
+import AccionesLead from './AccionesLead'
 
 export default async function DashboardTecnico() {
   const supabase = await createClient()
@@ -15,7 +16,7 @@ export default async function DashboardTecnico() {
 
   const { data: leads } = await supabase
     .from('trabajos')
-    .select('id, precio_estimado, created_at, solicitudes(descripcion, direccion_texto, nombre_contacto, telefono_contacto)')
+    .select('id, estado, precio_estimado, created_at, solicitudes(descripcion, direccion_texto, nombre_contacto, telefono_contacto)')
     .eq('tecnico_id', user!.id)
     .order('created_at', { ascending: false })
     .limit(20)
@@ -63,6 +64,7 @@ export default async function DashboardTecnico() {
                   Contactar por WhatsApp
                 </a>
               )}
+              <AccionesLead id={lead.id} estado={lead.estado} />
             </div>
           ))}
         </div>
